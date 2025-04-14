@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nike | Just do it.</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+    <body>
+        <div class="header">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <img src="images/logo.jpg" width="100px" height="auto">
+            </div> 
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="main.html">Home</a></li>
+                    <li><a href="cart.html">Products</a></li>
+                    <li><a href="https://www.nike.com/in/sustainability" target="_blank">About</a></li>
+                    <li><a href="">Contact</a></li>
+                    <li><a href="">Account</li>
+                </ul>
+            </nav>  
+        <img src="images/menu.png" class="menu-icon" onclick="menutoggle()"> 
+        </div>
+        <div class="row">
+            <div class="col-2"><br><br><br><br><br>
+            <h1>It's only Crazy<br>until you do it.</h1>
+            <p></p>
+            <a href="#c2" class="btn">Join us &#8618;</a>
+        </div>
+            <div class="col-2" >
+                <img src="images/leb.jpg" style="border:solid 5px #696969;">
+            </div>
+        </div>
+    </div>
+    </div>
+
+<!---------- Account Page ---------->
+<div class="header2" id="c2">
+<div class="account-page" >
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <img src="images/login1.jpg" width="100%">
+            </div>
+            <div class="col-6"><br><br><br><br>
+                <div class="form-container" style="border:solid 7px #696969;">
+                    <div class="form-btn">
+                        <span onclick="login()">Login</span>
+                        <span onclick="register()">Register</span>
+                        <hr id="Indicator">
+                    </div>
+
+                    <form id="LoginForm" >
+                        <input type="text" placeholder="Uname" name="Uname" id="Uname">
+                        <input type="password" placeholder="UPassword" name="UPassword" id="UPassword">
+                        <button type="submit" class="btn" onclick="check()">Login</button>
+                        <a href="">Forgot password</a>
+                    </form>    
+
+                    <form id="RegForm" >
+                        <input type="text" placeholder="Username" name="Username" id="Username">
+                        <input type="email" placeholder="Email" name="Email" id="Email">
+                        <input type="password" placeholder="Password" name="Password" id="Password">
+                        <button type="submit" class="btn" onclick="store()" value="submit">Register</button>
+                    </form> 
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+<!-- footer -->
+<div class="footer1">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3>Download Our App</h3>
+                <p>Download App for Android and ios mobile phone.</p>
+            <div class="app-logo">
+                <img src="images/play-store.png">
+                <img src="images/app-store.png">
+                <p>Contact us : nikeabc@exm.com</p>
+                <p>Toll free no.: +91 88888 99999</p>
+            </div>
+            </div>
+            <div class="footer-col-2">
+                <img src="images/logo.jpg" >
+                <p>Life is a sport. Make it count.</p>
+            </div>
+            <div class="footer-col-3">
+                <h2>Follow us on</h2>
+                <ul style="color: black;">
+                    <li>Facebook</li>
+                    <li>Twitter</li>
+                    <li>Instagram</li>
+                    <li>Youtube</li>
+                </ul> 
+            </div>
+        </div>
+        <hr>
+        <p class="copyright"> © 2023 Nike, Inc. All Rights Reserved</p>
+    </div>
+</div>
+
+<!--------toggle menu for js-------->
+<script>
+
+    var LoginForm = document.getElementById("LoginForm");
+    var RegForm = document.getElementById("RegForm");
+    var Indicator = document.getElementById("Indicator");
+
+    function register(){
+        RegForm.style.transform = "translateX(0px)";
+        LoginForm.style.transform = "translateX(0px)";
+        Indicator.style.transform = "translateX(100px)";
+    }
+    function login(){
+        RegForm.style.transform = "translateX(300px)";
+        LoginForm.style.transform = "translateX(300px)";
+        Indicator.style.transform = "translateX(0px)";
+    }
+    function check(){
+    var storedName = localStorage.getItem('Username');
+    var storedPw = localStorage.getItem('Password');
+
+    var Uname = document.getElementById('Uname');
+    var UPassword = document.getElementById('UPassword');
+    var userRemember = document.getElementById("rememberMe");
+
+    if(Uname.value == storedName && UPassword.value == storedPw){
+        alert('You are logged in.');
+    }else{
+        alert('*Username or Password is incorrect!');
+    }
+}
+    
+    function store(){
+    
+var Username = document.getElementById('Username');
+var Email = document.getElementById('Email');
+var Password = document.getElementById('Password');
+var lowerCaseLetters = /[a-z]/g;
+var upperCaseLetters = /[A-Z]/g;
+var numbers = /[0-9]/g;
+
+if(Username.value.length == 0){
+    alert('Please fill in username');
+
+}else if(Password.value.length == 0){
+    alert('Please fill in password');
+
+}else if(Email.value.length == 0){
+    alert('Please fill in email');
+
+}else if(Password.value.length < 8){
+    alert('Password should be Min of 8');
+
+}else if(!Password.value.match(numbers)){
+    alert('please add 1 number');
+
+}else if(!Password.value.match(upperCaseLetters)){
+    alert('please add 1 uppercase letter');
+
+}else if(!Password.value.match(lowerCaseLetters)){
+    alert('please add 1 lovercase letter');
+
+}else{
+    localStorage.setItem('Email', Email.value);
+    localStorage.setItem('Username', Username.value);
+    localStorage.setItem('Password', Password.value);
+    alert('Your account has been created');
+}
+}
+</script>
+
+
+</body>
+</html>
